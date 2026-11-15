@@ -16,8 +16,6 @@ const state = {
 };
 
 const IDLE_TIMEOUT_MS = 15 * 60 * 1000;
-const ADMIN_GATE_USERNAME = 'medledger';
-const ADMIN_GATE_PASSWORD = 'Hokage';
 let idleTimer = null;
 let adminGatePassed = false;
 function clearIdleTimer() {
@@ -284,25 +282,44 @@ function renderAdminGate() {
 
   document.getElementById('admin-gate-form')?.addEventListener('submit', (event) => {
     event.preventDefault();
-    const form = new FormData(event.currentTarget);
-    const username = String(form.get('username') || '').trim().toLowerCase();
-    const password = String(form.get('password') || '');
-    if (username !== ADMIN_GATE_USERNAME || password !== ADMIN_GATE_PASSWORD) {
-      document.getElementById('admin-gate-error').hidden = false;
-      document.getElementById('admin-password').value = '';
-      document.getElementById('admin-password').focus();
-      return;
-    }
+    const form = event.currentTarget;
+    const button = form.querySelector('button[type="submit"]');
+    const errorMessage = document.getElementById('admin-gate-error');
+    button.disabled = true;
+    button.textContent = 'Checking access…';
+    errorMessage.hidden = true;
 
-    adminGatePassed = true;
-    state.demo = true;
-    state.session = null;
-    state.user = null;
-    state.facility = {id:'demo-facility',name:'Harmony Primary Health Centre',notification_email:''};
-    state.member = {role:'facility_admin',full_name:'Demo Administrator'};
-    state.view = 'dashboard';
-    seedDemoData();
-    render();
+    (async () => {
+      try {
+        const response = await fetch('/.netlify/functions/admin-gate', {
+          method: 'POST',
+          cache: 'no-store',
+          headers: {'Content-Type':'application/json'},
+          body: JSON.stringify(Object.fromEntries(new FormData(form).entries()))
+        });
+        const result = await response.json().catch(() => null);
+        if (!response.ok || result?.authenticated !== true) {
+          throw new Error(result?.error || 'Access could not be verified. Please try again.');
+        }
+
+        adminGatePassed = true;
+        state.demo = true;
+        state.session = null;
+        state.user = null;
+        state.facility = {id:'demo-facility',name:'Harmony Primary Health Centre',notification_email:''};
+        state.member = {role:'facility_admin',full_name:'Demo Administrator'};
+        state.view = 'dashboard';
+        seedDemoData();
+        render();
+      } catch (error) {
+        errorMessage.textContent = error.message || 'Access could not be verified. Please try again.';
+        errorMessage.hidden = false;
+        document.getElementById('admin-password').value = '';
+        document.getElementById('admin-password').focus();
+        button.disabled = false;
+        button.innerHTML = `Enter workspace ${icon('arrow')}`;
+      }
+    })();
   });
   document.getElementById('staff-sign-in')?.addEventListener('click', renderLogin);
 }

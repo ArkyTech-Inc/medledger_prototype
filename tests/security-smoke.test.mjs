@@ -27,8 +27,8 @@ test('workspace groups care tasks and communicates the limits of live offline us
 test('construction page opens only the fictional demo through its temporary admin gate', () => {
   assert.match(app, /function renderAdminGate\(\)/);
   assert.match(app, /src="\/logo2\.png"/);
-  assert.match(app, /ADMIN_GATE_USERNAME = 'medledger'/);
-  assert.match(app, /ADMIN_GATE_PASSWORD = 'Hokage'/);
+  assert.match(app, /\/\.netlify\/functions\/admin-gate/);
+  assert.doesNotMatch(app, /ADMIN_GATE_PASSWORD|Hokage/);
   assert.match(app, /if \(!adminGatePassed\) return renderAdminGate\(\)/);
   assert.match(app, /Temporary prototype gate only — demo records are fictional/);
   assert.match(app, /Facility staff\? Sign in with your account/);
