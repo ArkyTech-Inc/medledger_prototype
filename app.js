@@ -214,7 +214,7 @@ function renderLogin() {
   app.innerHTML = `
     <div class="login-wrap">
       <aside class="login-aside">
-        <div class="brand"><img class="brand-logo" src="/assets/medledger-logo.svg" alt="" /><div><div class="brand-name">MedLedger</div><span class="brand-tag">Care, connected</span></div></div>
+        <div class="brand"><img class="brand-logo" src="/assets/medledger-logo.svg" alt="" /><div><div class="brand-name">MedLedger</div><span class="brand-tag">Built for underserved communities</span></div></div>
         <div class="login-copy">
           <p class="eyebrow login-eyebrow">A clearer view of care</p>
           <h1>Better records.<br>More connected care.</h1>
