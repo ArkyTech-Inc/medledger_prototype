@@ -1,0 +1,13 @@
+.env
+.env.*
+!.env.example
+*.log
+*.md
+*.txt
+.DS_Store
+node_modules/
+.netlify/
+supabase/.temp/
+supabase/functions/.env
+supabase/functions/.env.*
+!supabase/functions/.env.example

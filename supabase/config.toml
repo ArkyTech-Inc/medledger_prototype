@@ -1,0 +1,2 @@
+[functions.send-clinical-alert]
+verify_jwt = true
