@@ -265,6 +265,11 @@ function renderAdminGate() {
       <section class="login-panel construction-panel" aria-labelledby="admin-gate-title">
         <div class="login-form-wrap">
           <img class="construction-mobile-logo" src="/logo2.png" alt="MedLedger" />
+          <div class="construction-mobile-message">
+            <p class="eyebrow login-eyebrow">Under construction</p>
+            <h1>MedLedger is under construction</h1>
+            <p>We’ll be back soon. Thanks for your patience while we get things ready.</p>
+          </div>
           <p class="eyebrow login-eyebrow login-eyebrow-offset">Administrator access</p>
           <h2 id="admin-gate-title">Enter as admin</h2>
           <p>Enter your access details to preview the workspace.</p>

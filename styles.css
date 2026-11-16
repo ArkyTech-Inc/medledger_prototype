@@ -31,12 +31,16 @@
 .construction-panel .login-form-wrap .btn{margin-top:2px}
 .admin-gate-error{margin:0 0 12px;color:var(--red);font-size:11px;line-height:1.5}
 .construction-mobile-logo{display:none}
+.construction-mobile-message{display:none}
 .construction-staff-link{margin-top:14px}
 @media(max-width:760px){
   .construction-wrap{grid-template-columns:minmax(0,1fr)}
   .construction-panel{min-width:0}
   .construction-mobile-logo{display:block;width:min(210px,75%);height:auto;margin:0 auto 28px}
-  .construction-panel{min-height:100vh}
+  .construction-mobile-message{display:block;margin-bottom:24px}
+  .construction-mobile-message h1{margin:0 0 9px;color:#172f2a;font:800 clamp(24px,7vw,32px)/1.15 system-ui;letter-spacing:-.7px}
+  .construction-mobile-message>p:last-child{margin:0;color:var(--muted);font-size:13px;line-height:1.6}
+  .construction-panel{min-height:100vh;align-items:flex-start}
 }
 .connection-pill.offline .connection-dot,.connection-badge.offline .connection-dot{background:var(--amber)}
 .worklist-heading{align-items:center}
