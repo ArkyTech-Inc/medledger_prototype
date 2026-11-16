@@ -33,6 +33,8 @@
 .construction-mobile-logo{display:none}
 .construction-staff-link{margin-top:14px}
 @media(max-width:760px){
+  .construction-wrap{grid-template-columns:minmax(0,1fr)}
+  .construction-panel{min-width:0}
   .construction-mobile-logo{display:block;width:min(210px,75%);height:auto;margin:0 auto 28px}
   .construction-panel{min-height:100vh}
 }
@@ -130,4 +132,7 @@
   .task-row .status{font-size:8px;padding:4px 6px}
   .workspace-notice .text-link{font-size:10px;padding:4px}
   .mobile-nav button{font-size:8px}
+}
+@media(max-width:360px){
+  .breadcrumb .mobile-brand{font-size:0;gap:0}
 }

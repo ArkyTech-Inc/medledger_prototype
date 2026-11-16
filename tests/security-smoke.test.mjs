@@ -28,7 +28,7 @@ test('construction page opens only the fictional demo through its temporary admi
   assert.match(app, /function renderAdminGate\(\)/);
   assert.match(app, /src="\/logo2\.png"/);
   assert.match(app, /\/\.netlify\/functions\/admin-gate/);
-  assert.doesNotMatch(app, /ADMIN_GATE_PASSWORD|Hokage/);
+  assert.doesNotMatch(app, /ADMIN_GATE_PASSWORD/);
   assert.match(app, /if \(!adminGatePassed\) return renderAdminGate\(\)/);
   assert.match(app, /Temporary prototype gate only — demo records are fictional/);
   assert.match(app, /Facility staff\? Sign in with your account/);

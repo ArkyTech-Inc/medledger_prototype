@@ -260,7 +260,7 @@ function renderAdminGate() {
           <h1>Medledger is under construction at the moment, we will be back soon.</h1>
           <p>Thanks for your patience while we get things ready.</p>
         </div>
-        <div class="login-bottom">MedLedger · Care, connected</div>
+        <div class="login-bottom">MedLedger · Built for the underserved communities</div>
       </aside>
       <section class="login-panel construction-panel" aria-labelledby="admin-gate-title">
         <div class="login-form-wrap">
